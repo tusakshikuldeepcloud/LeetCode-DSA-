@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+         vector<int> freq(26, 0);
+
+        // Count frequency of magazine characters
+        for (char ch : magazine) {
+            freq[ch - 'a']++;
+        }
+
+        // Check ransomNote characters
+        for (char ch : ransomNote) {
+
+            if (freq[ch - 'a'] == 0)
+                return false;
+
+            freq[ch - 'a']--;
+        }
+
+        return true;
+    }
+};
